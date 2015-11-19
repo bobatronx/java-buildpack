@@ -32,6 +32,7 @@ module JavaBuildpack
       def initialize(context)
         super(context)
         @ratpack_utils = JavaBuildpack::Util::RatpackUtils.new
+        @spring_boot_utils = JavaBuildpack::Util::SpringBootUtils.new
       end
 
       protected

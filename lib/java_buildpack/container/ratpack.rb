@@ -18,6 +18,7 @@ require 'java_buildpack/container'
 require 'java_buildpack/container/dist_zip_like'
 require 'java_buildpack/util/dash_case'
 require 'java_buildpack/util/ratpack_utils'
+require 'java_buildpack/util/spring_boot_utils'
 
 module JavaBuildpack
   module Container
@@ -42,7 +43,7 @@ module JavaBuildpack
 
       # (see JavaBuildpack::Container::DistZipLike#supports?)
       def supports?
-        start_script(root) && start_script(root).exist? && @ratpack_utils.is?(@application)
+        start_script(root) && start_script(root).exist? && !@spring_boot_utils.is?(@application) && @ratpack_utils.is?(@application)
       end
 
       private
